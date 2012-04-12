@@ -1,0 +1,123 @@
+<html>
+<head>
+
+<!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+
+<script type="text/javascript">
+
+
+function setupcanvas()
+{
+
+var img = new Image(255,255) ;
+img.src = "/testimg/test1.png"  ;
+
+var newCanvas = document.getElementById("canvasimg") ;
+var c = newCanvas.getContext("2d") ;
+var newimg = c.drawImage(img, 0, 0);
+var drawMode = false ;
+
+newCanvas.onmousemove = mousemoveev ;
+newCanvas.onmousedown = mousedownev ;
+newCanvas.onmouseup = mouseupev ;
+newCanvas.onmouseout = mouseoutev ;
+
+var c = newCanvas.getContext("2d") ;
+
+function mousemoveev(e){ 
+    	
+		if ( drawMode == true )
+		{
+		        e.preventDefault() ;	
+			var xy = getxy(e, newCanvas ) ;
+
+			 c.lineWidth = 1;
+			 c.strokeStyle = '#000';	
+			 c.fillStyle = '#00A308';
+			 c.tertStyle = '#DDD';
+			 c.strokeFill = 1; //outline shapes
+			 c.fillRect(xy.x,xy.y,5,5) ;	
+			 return ;
+		}
+
+
+	}
+
+
+
+function mouseoutev(e){    
+       e.preventDefault() ;
+	c.drawImage(img, 0, 0);
+}
+
+function mouseupev(e){ 
+         e.preventDefault() ;
+	 drawMode = false ;
+}
+
+function mousedownev(e){ 
+    e.preventDefault() ;	 
+    drawMode = true ;
+}
+	
+
+}
+
+function getxy(e, o) {
+//gets mouse position relative to object o
+
+		var ev = e || window.event;
+		var bo = getpos(o);
+		var x = ev.clientX - bo.x ;	//correct for canvas position, workspace scroll offset
+		var y = ev.clientY - bo.y ;									
+		x += document.documentElement.scrollLeft;	//correct for window scroll offset
+		y += document.documentElement.scrollTop;									
+		return { x: x-.5, y: y-.5 }; //-.5 prevents antialiasing of stroke lines
+
+}
+
+
+function getpos(o) {
+//gets position of object o
+	var bo, x, y, b; x = y = 0;
+	if(document.getBoxObjectFor) {	//moz
+		bo = document.getBoxObjectFor(o);
+		x = bo.x; y = bo.y;
+	} else if (o.getBoundingClientRect) { //ie (??)
+		bo = o.getBoundingClientRect();
+		x = bo.left; y = bo.top;
+	} else { //opera, safari etc
+		while(o && o.nodeName != 'BODY') {
+			x += o.offsetLeft;
+			y += o.offsetTop;
+			b = parseInt(document.defaultView.getComputedStyle(o,null).getPropertyValue('border-width'));
+			if(b > 0) { x += b; y +=b; }
+			o = o.offsetParent;
+		}
+	}
+	return { x:x, y:y }
+}
+
+
+
+
+</script> 
+
+</head>
+
+<body onLoad="javascript:setupcanvas()">
+
+
+<canvas id="canvasimg" width="250" height="250">
+This demo uses the HTML canvas object. You'll need a browser such as Firefox 2 or Safari to use the demo.
+</canvas>
+
+<br/>
+<p>&copy Image Crown copyright/ database right 2008 (EDINA/Ordance Survey supplied)</p>
+ 
+
+</body>
+
+
+
+</html>
