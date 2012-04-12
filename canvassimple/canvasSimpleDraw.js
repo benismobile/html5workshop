@@ -20,7 +20,6 @@ canvas.addEventListener("mousedown", mousedownev, false);
 canvas.addEventListener("mouseout", mouseoutev, false);
 canvas.addEventListener("mouseup", mouseupev, false);
 
-
 var c = canvas.getContext("2d") ;
 
 function mousemoveev(e){ 
