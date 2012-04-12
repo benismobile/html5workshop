@@ -6,15 +6,20 @@ img.src = "images/test1.png"  ;
 
 var canvas = document.getElementById("canvasimg") ;
 var context = canvas.getContext("2d") ;
-context.drawImage(img, 0, 0);
+
+img.onload = function() {
+    context.drawImage(img, 0, 0);
+};
 
 var drawMode = false ;
 
 // add some mouse event listenters to canvas
-canvas.onmousemove = mousemoveev ;
-canvas.onmousedown = mousedownev ;
-canvas.onmouseup = mouseupev ;
-canvas.onmouseout = mouseoutev ;
+
+canvas.addEventListener("mousemove", mousemoveev, false);
+canvas.addEventListener("mousedown", mousedownev, false);
+canvas.addEventListener("mouseout", mouseoutev, false);
+canvas.addEventListener("mouseup", mouseupev, false);
+
 
 var c = canvas.getContext("2d") ;
 
