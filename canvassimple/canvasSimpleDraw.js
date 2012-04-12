@@ -7,11 +7,12 @@ img.src = "images/test1.png"  ;
 var canvas = document.getElementById("canvasimg") ;
 var context = canvas.getContext("2d") ;
 
+// wait for image to load before drawing image on canvas
 img.onload = function() {
     context.drawImage(img, 0, 0);
 };
 
-var drawMode = false ;
+var drawMode = false ;  // only draw when mouse down
 
 // add some mouse event listenters to canvas
 
@@ -22,20 +23,17 @@ canvas.addEventListener("mouseup", mouseupev, false);
 
 var c = canvas.getContext("2d") ;
 
+// if button down fraw when mouse is moving
 function mousemoveev(e){ 
         
 		if ( drawMode === true )
 		{
-            e.stopPropogtion() ;
+            e.stopPropagation() ;
 		    e.preventDefault() ;	
-			var xy = getxy(e, canvas ) ;
-
-			 c.lineWidth = 1;
-			 c.strokeStyle = '#000';	
-			 c.fillStyle = '#00A308';
-			 c.tertStyle = '#DDD';
-			 c.strokeFill = 1; //outline shapes
-			 c.fillRect(xy.x,xy.y,5,5) ;	
+			var xy = getxy(e, canvas ) ; 
+				
+			 c.fillStyle = '#00A308';	// green		
+			 c.fillRect(xy.x,xy.y,5,5) ;  // draw 5 pixel square at mouse screen postion	
 			 return ;
 		}
 
@@ -43,26 +41,27 @@ function mousemoveev(e){
 	}
 
 
-
+// clear canvas when mouse moves out of canvas area
 function mouseoutev(e){    
 
-    e.stopPropogtion() ;
+    e.stopPropagation() ;
     e.preventDefault() ;
-	c.drawImage(img, 0, 0);
+	c.drawImage(img, 0, 0);  // clear canvas when mouse out
 }
 
+// stop drawing when mouse button up
 function mouseupev(e){ 
     
-    e.stopPropogtion() ;
+    e.stopPropagation() ;
     e.preventDefault() ;
-	drawMode = false ;
+	 drawMode = false ; // don't draw when unless mouse down
 }
-
+// start drawing when mouse button down
 function mousedownev(e){
     
-    e.stopPropogtion() ;
+    e.stopPropagation() ;
     e.preventDefault() ;	 
-    drawMode = true ;
+    drawMode = true ; // mouse is down so start drawing
 }
 	
 
@@ -77,7 +76,7 @@ function getxy(e, o) {
 		var y = ev.clientY - bo.y ;									
 		x += document.documentElement.scrollLeft;	//correct for window scroll offset
 		y += document.documentElement.scrollTop;									
-		return { x: x-.5, y: y-.5 }; //-.5 prevents antialiasing of stroke lines
+		return { x: x-0.5, y: y-0.5 }; //-.5 prevents antialiasing of stroke lines
 
 }
 
@@ -100,7 +99,8 @@ function getpos(o) {
 			o = o.offsetParent;
 		}
 	}
-	return { x:x, y:y }
+	return { x:x, y:y } ;
+     
 }
 
 
