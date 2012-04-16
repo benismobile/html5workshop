@@ -1,19 +1,27 @@
 function init()
 {
 
-var img = new Image(256,256) ;
-img.src = "images/test1.png"  ;
+ 
 
 var canvas = document.getElementById("canvasimg") ;
 var canvasContext = canvas.getContext("2d") ; // need 2d context to draw
 var c = canvas.getContext("2d") ;
 
-img.onload = function  (){
+var img = new Image(256,256) ;
+
+
+ img.src = "images/test1.png"  ;
+/*
+ * code for cross origin resource sharing 
+ * img.crossOrigin = '';
+ * img.src = "http://devel.edina.ac.uk:3333/html5workshop/test2.png"  ;
+*/
+ img.onload = function  (){
         c.drawImage(img, 0, 0);
 };
 
-canvas.addEventListener("mousemove", mousemoveev, false);
 
+canvas.addEventListener("mousemove", mousemoveev, false);
 
     function mousemoveev(e){ 
 
