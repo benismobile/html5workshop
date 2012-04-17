@@ -2,7 +2,7 @@
 
 <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <script type="text/javascript" src="./featuredetect.js"></script>
+        <script type="text/javascript" src="./affinescale.js"></script>
         <title>Canvas Affine Scale</title>
 
 
@@ -21,12 +21,20 @@ This demo uses the HTML canvas object. You'll need a recent browser to use the d
 </p>
 
 
-<input type="button" name="rescale" onClick="javascript:resize()"> 
-
-
 <canvas id="scaledimg" width="256" height="256">
-This demo uses the HTML canvas object. You'll need a recent browser to use the demo.
+This demo uses the HTML canvas object. You'll need a recent browser t=o use the demo.
 </canvas>
+
+<br/>
+<p>&copy Image Crown copyright/ database right 2008 (EDINA/Ordance Survey supplied)
+</p>
+
+
+<button type="button" na="rescalebtn" onClick="javascript:resize()">Rescale</button>
+
+<label for="sclfct">scale factor</label> 
+<input type="text" id="sclfct" name="scalefactor" value="0.5"/>
+
 
 </body>
 
