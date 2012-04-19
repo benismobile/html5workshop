@@ -1,0 +1,62 @@
+#workflow {
+    background:#555 ;
+    overflow: hidden ;
+}
+
+#steps {
+    float:left ;
+    width:15% ;
+    height:70% ;
+    background:#f0f5f1 ;
+}
+
+#steps header {
+
+    height:18% ;
+    border:2% solid #666666;
+    margin-right:5%;
+    margin-left:5%;
+    margin-top:5%;
+    margin-bottom:5%;
+  -webkit-border-radius:10px;
+  -ms-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+  -webkit-box-shadow: inset 0 0 3px #000;
+  -ms-box-shadow: inset 0 0 3px #000;
+  box-shadow: inset 0 0 3px #000;
+  text-align: center;
+  cursor: move;
+}
+
+#dropboxarea {
+    float:left ;
+    width:85% ;
+    height:50% ;
+    
+        
+    
+}
+
+#dropboxarea header {
+
+    float:left ;
+    height: 50%;
+    width: 20% ;
+    background: #eee ;
+    border:2% solid #666666;
+    margin-right:2%;
+    margin-left:2%;
+    margin-bottom:10%;
+    margin-top:10%;
+  -webkit-border-radius:10px;
+  -ms-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+  -webkit-box-shadow: inset 0 0 3px #000;
+  -ms-box-shadow: inset 0 0 3px #000;
+  box-shadow: inset 0 0 3px #000;
+  text-align: center;
+  cursor: move;
+}
+
